@@ -21,5 +21,5 @@ def matrix_transpose(matrix):
                  for _ in range(len(matrix[0]))]
     for i in range(0, len(matrix)):
         for j in range(0, len(matrix[0])):
-            transpose[j][i] = matrix[i][j] 
+            transpose[j][i] = matrix[i][j]
     return transpose
