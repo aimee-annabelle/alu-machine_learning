@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Calculate the shape of an Ndarray
 """
