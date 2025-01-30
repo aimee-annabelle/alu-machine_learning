@@ -2,6 +2,7 @@
 """
 Module for concatenating matrices along a specific axis
 """
+import numpy as np
 
 
 def np_cat(mat1, mat2, axis=0):
@@ -9,11 +10,11 @@ def np_cat(mat1, mat2, axis=0):
     Concatenates two matrices along a specific axis
     
     Parameters:
-        mat1: First input matrix
-        mat2: Second input matrix
+        mat1 (numpy.ndarray): First input matrix
+        mat2 (numpy.ndarray): Second input matrix
         axis (int): Axis along which to concatenate (default=0)
     
     Returns:
-        Concatenated matrix
+        numpy.ndarray: Concatenated matrix
     """
-    return mat1.__add__(mat2)
+    return np.concatenate((mat1, mat2), axis=axis)
