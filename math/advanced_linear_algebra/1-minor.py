@@ -20,7 +20,8 @@ def determinant(matrix):
 
     det = 0
     for j in range(len(matrix)):
-        det += ((-1) ** j) * matrix[0][j] * determinant(get_matrix_minor(matrix, 0, j))
+        det += ((-1) ** j) * matrix[0][j] * determinant(get_matrix_minor
+                                                        (matrix, 0, j))
     return det
 
 
@@ -39,16 +40,17 @@ def minor(matrix):
         ValueError: If matrix is not square or is empty
     """
     # Check if matrix is a list of lists
-    if not isinstance(matrix, list) or not all(isinstance(row, list) 
+    if not isinstance(matrix, list) or not all(isinstance(row, list)
                                                for row in matrix):
         raise TypeError("matrix must be a list of lists")
 
-    # Check if matrix is empty
-    if not matrix or not matrix[0]:
+    # Check if matrix or any row is empty
+    if not matrix or not matrix[0] or not all(row for row in matrix):
         raise ValueError("matrix must be a non-empty square matrix")
 
     # Check if matrix is square
-    if len(matrix) != len(matrix[0]):
+    n = len(matrix)
+    if not all(len(row) == n for row in matrix):
         raise ValueError("matrix must be a non-empty square matrix")
 
     # Handle 1x1 matrix case
@@ -56,7 +58,6 @@ def minor(matrix):
         return [[1]]
 
     # Calculate minor matrix
-    n = len(matrix)
     minor_matrix = []
     for i in range(n):
         minor_row = []
@@ -66,5 +67,9 @@ def minor(matrix):
             # Calculate determinant of minor matrix
             minor_row.append(determinant(minor_ij))
         minor_matrix.append(minor_row)
+
+    # Verify output is not empty
+    if not minor_matrix or not minor_matrix[0]:
+        raise ValueError("matrix must be a non-empty square matrix")
 
     return minor_matrix
