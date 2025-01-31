@@ -6,9 +6,8 @@ Module for calculating definiteness of a matrix
 
 import numpy as np
 
+
 def definiteness(matrix):
-
-
     """
     Determines the definiteness of a matrix.
 
