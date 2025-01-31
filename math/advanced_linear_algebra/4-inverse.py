@@ -9,8 +9,7 @@ def inverse(matrix):
     Calculates the inverse of a square matrix.
 
     Parameters:
-    matrix (list of list of numbers): 
-    A square matrix represented as a list of lists.
+    matrix: A square matrix represented as a list of lists.
 
     Returns:
     list of list of numbers: The inverse of the matrix if it's non-singular,
@@ -83,8 +82,7 @@ def inverse(matrix):
     cofactors = cofactor(matrix)
     adjugate = transpose(cofactors)
 
-    # Calculate the inverse matrix by dividing 
-    # each element of the adjugate matrix by the determinant
+    # Calculate the inverse matrix
     inverse_matrix = [[adjugate[i][j] / det for j in range(n)]
                       for i in range(n)]
 
