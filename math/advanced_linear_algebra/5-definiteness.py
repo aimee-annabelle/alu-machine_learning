@@ -7,6 +7,8 @@ Module for calculating definiteness of a matrix
 import numpy as np
 
 def definiteness(matrix):
+
+
     """
     Determines the definiteness of a matrix.
 
@@ -14,7 +16,7 @@ def definiteness(matrix):
     matrix (numpy.ndarray): A square matrix to check.
 
     Returns:
-    str: A string describing the definiteness of the matrix, 
+    str: A string describing the definiteness of the matrix,
     or None if the matrix is invalid.
 
     Raises:
