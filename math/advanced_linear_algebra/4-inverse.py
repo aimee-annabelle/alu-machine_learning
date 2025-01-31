@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+Module for calculating adjugate matrices
+"""
+
 
 def inverse(matrix):
     """
@@ -15,19 +19,19 @@ def inverse(matrix):
     ValueError: If the matrix is empty or not square.
     """
 
-    """Check if matrix is a list of lists"""
+    # Check if matrix is a list of lists
     if not isinstance(matrix, list) or not all(isinstance(row, list)
                                                for row in matrix):
         raise TypeError("matrix must be a list of lists")
 
-    """Check if matrix is non-empty and square (same number of rows and columns)"""
+    # Check if matrix is non-empty and square (same number of rows and columns)
     if len(matrix) == 0 or len(matrix) != len(matrix[0]):
         raise ValueError("matrix must be a non-empty square matrix")
 
-    """Get the size of the matrix (number of rows/columns)"""
+    # Get the size of the matrix (number of rows/columns)
     n = len(matrix)
 
-    """Create an identity matrix of the same size as the input matrix"""
+    # Create an identity matrix of the same size as the input matrix
     identity = [[1 if i == j else 0 for j in range(n)]
                 for i in range(n)]
 
@@ -66,18 +70,18 @@ def inverse(matrix):
             cofactors.append(row)
         return cofactors
 
-    """Calculate the determinant of the matrix"""
+    # Calculate the determinant of the matrix
     det = determinant(matrix)
 
-    """If determinant is 0, the matrix is singular (non-invertible), so return None"""
+    # If determinant is 0, the matrix is singular (non-invertible), so return None
     if det == 0:
         return None
 
-    """Get the cofactor matrix and transpose it to get the adjugate matrix"""
+    # Get the cofactor matrix and transpose it to get the adjugate matrix
     cofactors = cofactor(matrix)
     adjugate = transpose(cofactors)
 
-    """Calculate the inverse matrix by dividing each element of the adjugate matrix by the determinant"""
+    # Calculate the inverse matrix by dividing each element of the adjugate matrix by the determinant
     inverse_matrix = [[adjugate[i][j] / det for j in range(n)]
                       for i in range(n)]
 
