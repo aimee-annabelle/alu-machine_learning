@@ -25,7 +25,8 @@ def determinant(matrix):
         ValueError: If matrix is not square
     """
     # Check if matrix is a list of lists
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
+    if not isinstance(matrix, list) or not all(isinstance(row, list) 
+                                               for row in matrix):
         raise TypeError("matrix must be a list of lists")
 
     # Handle empty matrix case [[]]
@@ -47,6 +48,7 @@ def determinant(matrix):
     # For larger matrices, use Laplace expansion along first row
     det = 0
     for j in range(len(matrix)):
-        det += ((-1) ** j) * matrix[0][j] * determinant(get_minor(matrix, 0, j))
+        det += ((-1) ** j) * matrix[0][j] * determinant(get_minor
+                                                        (matrix, 0, j))
 
     return det
