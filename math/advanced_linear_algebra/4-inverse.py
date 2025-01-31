@@ -86,4 +86,9 @@ def inverse(matrix):
     inverse_matrix = [[adjugate[i][j] / det for j in range(n)]
                       for i in range(n)]
 
+    # Ensure that the inverse matrix is not empty
+    if not inverse_matrix or all(all(cell is None for cell in row)
+                                 for row in inverse_matrix):
+        return None
+
     return inverse_matrix
