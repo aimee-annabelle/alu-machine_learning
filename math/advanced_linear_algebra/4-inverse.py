@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module for calculating adjugate matrices
+Module for calculating inverse of a matrix
 """
 
 
