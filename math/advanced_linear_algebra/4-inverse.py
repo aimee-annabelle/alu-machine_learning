@@ -9,10 +9,12 @@ def inverse(matrix):
     Calculates the inverse of a square matrix.
 
     Parameters:
-    matrix (list of list of numbers): A square matrix represented as a list of lists.
+    matrix (list of list of numbers): 
+    A square matrix represented as a list of lists.
 
     Returns:
-    list of list of numbers: The inverse of the matrix if it's non-singular, or None if the matrix is singular.
+    list of list of numbers: The inverse of the matrix if it's non-singular,
+      or None if the matrix is singular.
 
     Raises:
     TypeError: If the input is not a list of lists.
@@ -64,8 +66,8 @@ def inverse(matrix):
         for i in range(len(matrix)):
             row = []
             for j in range(len(matrix)):
-                minor = [row[:j] + row[j+1:] for row in (matrix[:i] + 
-                                                         matrix[i+1:])]
+                minor = [row[:j] + row[j+1:]
+                         for row in (matrix[:i] + matrix[i+1:])]
                 row.append(((-1) ** (i + j)) * determinant(minor))
             cofactors.append(row)
         return cofactors
@@ -73,7 +75,7 @@ def inverse(matrix):
     # Calculate the determinant of the matrix
     det = determinant(matrix)
 
-    # If determinant is 0, the matrix is singular (non-invertible), so return None
+    # If determinant is 0, the matrix is singular, so return None
     if det == 0:
         return None
 
@@ -81,7 +83,8 @@ def inverse(matrix):
     cofactors = cofactor(matrix)
     adjugate = transpose(cofactors)
 
-    # Calculate the inverse matrix by dividing each element of the adjugate matrix by the determinant
+    # Calculate the inverse matrix by dividing 
+    # each element of the adjugate matrix by the determinant
     inverse_matrix = [[adjugate[i][j] / det for j in range(n)]
                       for i in range(n)]
 
