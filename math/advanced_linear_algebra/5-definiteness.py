@@ -26,16 +26,25 @@ def definiteness(matrix):
     if not isinstance(matrix, np.ndarray):
         raise TypeError("matrix must be a numpy.ndarray")
 
+    # Debugging: Print the matrix type and shape for validation
+    print(f"Matrix type: {type(matrix)}")
+    print(f"Matrix shape: {matrix.shape}")
+
     # Check if the matrix is square and valid
     if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1]:
+        print("Matrix is not square or has invalid dimensions.")
         return None
 
     # Check if the matrix is symmetric
     if not np.allclose(matrix, matrix.T):
+        print("Matrix is not symmetric.")
         return None
 
     # Calculate the eigenvalues
     eigenvalues = np.linalg.eigvals(matrix)
+
+    # Debugging: Print the eigenvalues for inspection
+    print(f"Eigenvalues: {eigenvalues}")
 
     # Check the eigenvalues to determine the definiteness
     if np.all(eigenvalues > 0):
